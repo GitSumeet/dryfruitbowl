@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(:version => 20121208144108) do
     t.decimal  "potassium",      :precision => 10, :scale => 0
     t.decimal  "sodium",         :precision => 10, :scale => 0
     t.decimal  "zinc",           :precision => 10, :scale => 0
-    t.string   "about"
+    t.text     "about"
     t.text     "benefits"
     t.text     "sideeffects"
-    t.string   "extra"
+    t.text     "extra"
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
   end
