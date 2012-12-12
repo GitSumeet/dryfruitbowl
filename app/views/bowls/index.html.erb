@@ -1,0 +1,33 @@
+<h1>Listing bowls</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Userid</th>
+    <th>Name</th>
+    <th>Colour</th>
+    <th>Created</th>
+    <th>Modified</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bowls.each do |bowl| %>
+  <tr>
+    <td><%= bowl.id %></td>
+    <td><%= bowl.userid %></td>
+    <td><%= bowl.name %></td>
+    <td><%= bowl.colour %></td>
+    <td><%= bowl.created %></td>
+    <td><%= bowl.modified %></td>
+    <td><%= link_to 'Show', bowl %></td>
+    <td><%= link_to 'Edit', edit_bowl_path(bowl) %></td>
+    <td><%= link_to 'Destroy', bowl, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bowl', new_bowl_path %>

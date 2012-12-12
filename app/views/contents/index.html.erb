@@ -1,0 +1,29 @@
+<h1>Listing contents</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Bowlid</th>
+    <th>Dryfruitid</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contents.each do |content| %>
+  <tr>
+    <td><%= content.id %></td>
+    <td><%= content.bowlid %></td>
+    <td><%= content.dryfruitid %></td>
+    <td><%= content.quantity %></td>
+    <td><%= link_to 'Show', content %></td>
+    <td><%= link_to 'Edit', edit_content_path(content) %></td>
+    <td><%= link_to 'Destroy', content, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Content', new_content_path %>

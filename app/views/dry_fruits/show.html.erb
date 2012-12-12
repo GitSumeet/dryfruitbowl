@@ -1,0 +1,152 @@
+<center><h2><%= @dry_fruit.name %> (<%= @dry_fruit.scientificname %>)</h2></center>
+
+<table>
+	<tbody>
+		<tr>
+			<td width="25%" align="center" valign="top">
+				<table class="bordered striped">
+					<tbody>
+						<tr>
+							<td>Energy</td>
+							<td><%= @dry_fruit.energy %> kcal</td>	
+						</tr>
+						<tr>
+							<td>Fat</td>
+				  			<td><%= @dry_fruit.fat %> gms</td>	
+						</tr>
+						<tr>
+				  			<td>Protein</td>
+				  			<td><%= @dry_fruit.protein %> gms</td>			
+						</tr>
+						<tr>
+				  			<td>Carbohydrates</td>
+				  			<td><%= @dry_fruit.carbohydrates %> gms</td>			
+						</tr>
+						<tr>
+				  			<td>Calcium</td>
+				  			<td><%= @dry_fruit.calcium %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Iron</td>
+				  			<td><%= @dry_fruit.iron %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Manganese</td>
+				  			<td><%= @dry_fruit.manganese %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Magnesium</td>
+				  			<td><%= @dry_fruit.magnesium %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Phosphorus</td>
+				  			<td><%= @dry_fruit.phosphorus %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Potassium</td>
+				  			<td><%= @dry_fruit.potassium %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Sodium</td>
+				  			<td><%= @dry_fruit.sodium %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Zinc</td>
+				  			<td><%= @dry_fruit.zinc %> mg</td>			
+						</tr>						
+					</tbody>
+				</table>    				
+			</td>
+			<td width="50%" align="center">
+				<div class="span5">
+					<div class="carousel span5" style="height: 300px;" data-role="carousel" data-param-effect="fade" data-param-direction="left" data-param-period="3000" data-param-markers="on">
+					    <div class="slides">
+					        <div class="slide image" id="slide4">
+					            <img src="/assets/<%= @dry_fruit.imagelarge1 %>" />
+					        </div>
+					        <div class="slide image" id="slide5">
+					            <img src="/assets/<%= @dry_fruit.imagelarge2 %>" />
+					        </div>
+					    </div>
+					</div>
+					</div>
+				</div>				
+			</td>
+			<td width="25%" align="center" valign="top">
+				<table class="bordered striped">
+					<tbody>
+						<tr>
+							<td>Vitamin A</td>
+							<td><%= @dry_fruit.vitamin_a %> IU</td>
+						</tr>
+						<tr>
+							<td>Vitamin B1</td>
+							<td><%= @dry_fruit.vitamin_b1 %> mg</td>			
+						</tr>		
+						<tr>
+							<td>Vitamin B2</td>
+							<td><%= @dry_fruit.vitamin_b2 %> mg</td>	
+						</tr>
+						<tr>
+							<td>Vitamin B3</td>
+				  			<td><%= @dry_fruit.vitamin_b3 %> mg</td>	
+						</tr>
+						<tr>
+				  			<td>Vitamin B5</td>
+				  			<td><%= @dry_fruit.vitamin_b5 %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Vitamin B6</td>
+				  			<td><%= @dry_fruit.vitamin_b6 %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Vitamin B9</td>
+				  			<td><%= @dry_fruit.vitamin_b9 %> ug</td>			
+						</tr>
+						<tr>
+				  			<td>Vitamin B12</td>
+				  			<td><%= @dry_fruit.vitamin_b12 %> ug</td>			
+						</tr>
+						<tr>
+				  			<td>Vitamin C</td>
+				  			<td><%= @dry_fruit.vitamin_c %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Vitamin D</td>
+				  			<td><%= @dry_fruit.vitamin_d %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Vitamin E</td>
+				  			<td><%= @dry_fruit.vitamin_e %> mg</td>			
+						</tr>
+						<tr>
+				  			<td>Vitamin K</td>
+				  			<td><%= @dry_fruit.vitamin_k %> ug</td>			
+						</tr>						
+					</tbody>
+				</table>    								
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<h3>About</h3>
+				<p><%= @dry_fruit.about %></p>
+			</td>
+		</tr>		
+		<tr>
+			<td colspan="3">
+				<h3>Benefits</h3>
+				<p><%= @dry_fruit.benefits %></p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<h3>Side Effects</h3>
+				<p><%= @dry_fruit.sideeffects %></p>
+			</td>
+		</tr>		
+	</tbody>
+</table>
+
+<%= link_to 'Edit', edit_dry_fruit_path(@dry_fruit) %> |
+<%= link_to 'Back', dry_fruits_path %>

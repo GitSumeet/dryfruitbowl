@@ -1,0 +1,24 @@
+<% @dryfruits.each do |dryfruit| %>
+<table>
+  <tbody><tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Scientificname</th>
+    <th>Image</th>
+    <th><br></th>
+    <th><br></th>
+    <th><br></th>
+  </tr>
+<tr>
+    <td><%= dryfruit.id %></td>
+    <td><%= dryfruit.name %></td>
+    <td><%= dryfruit.scientificname %></td>
+    <td><%= dryfruit.image %></td>
+    <td><%= link_to 'Show', dryfruit %></td>
+    <td><%= link_to 'Edit', edit_dryfruit_path(dryfruit) %></td>
+    <td><%= link_to 'Destroy', dryfruit, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+</tbody></table>
+<% end %>
+
+<%= link_to 'New Dryfruit', new_dryfruit_path %>

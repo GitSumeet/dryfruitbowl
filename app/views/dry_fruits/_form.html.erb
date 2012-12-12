@@ -1,0 +1,157 @@
+<%= form_for(@dry_fruit) do |f| %>
+  <% if @dry_fruit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dry_fruit.errors.count, "error") %> prohibited this dry_fruit from being saved:</h2>
+
+      <ul>
+      <% @dry_fruit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :scientificname %><br />
+    <%= f.text_field :scientificname %>
+  </div>
+  <div class="field">
+    <%= f.label :energy %><br />
+    <%= f.number_field :energy %>
+  </div>
+  <div class="field">
+    <%= f.label :fat %><br />
+    <%= f.text_field :fat %>
+  </div>
+  <div class="field">
+    <%= f.label :protein %><br />
+    <%= f.text_field :protein %>
+  </div>
+  <div class="field">
+    <%= f.label :imagesmall %><br />
+    <%= f.text_field :imagesmall %>
+  </div>
+  <div class="field">
+    <%= f.label :imagelarge1 %><br />
+    <%= f.text_field :imagelarge1 %>
+  </div>
+  <div class="field">
+    <%= f.label :imagelarge2 %><br />
+    <%= f.text_field :imagelarge2 %>
+  </div>
+  <div class="field">
+    <%= f.label :imagelarge3 %><br />
+    <%= f.text_field :imagelarge3 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_a %><br />
+    <%= f.text_field :vitamin_a %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_b1 %><br />
+    <%= f.text_field :vitamin_b1 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_b2 %><br />
+    <%= f.text_field :vitamin_b2 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_b3 %><br />
+    <%= f.text_field :vitamin_b3 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_b5 %><br />
+    <%= f.text_field :vitamin_b5 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_b6 %><br />
+    <%= f.text_field :vitamin_b6 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_b9 %><br />
+    <%= f.text_field :vitamin_b9 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_b12 %><br />
+    <%= f.text_field :vitamin_b12 %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_c %><br />
+    <%= f.text_field :vitamin_c %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_d %><br />
+    <%= f.text_field :vitamin_d %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_e %><br />
+    <%= f.text_field :vitamin_e %>
+  </div>
+  <div class="field">
+    <%= f.label :vitamin_k %><br />
+    <%= f.text_field :vitamin_k %>
+  </div>
+  <div class="field">
+    <%= f.label :carbohydrates %><br />
+    <%= f.text_field :carbohydrates %>
+  </div>
+  <div class="field">
+    <%= f.label :calcium %><br />
+    <%= f.text_field :calcium %>
+  </div>
+  <div class="field">
+    <%= f.label :iron %><br />
+    <%= f.text_field :iron %>
+  </div>
+  <div class="field">
+    <%= f.label :magnesium %><br />
+    <%= f.text_field :magnesium %>
+  </div>
+  <div class="field">
+    <%= f.label :manganese %><br />
+    <%= f.text_field :manganese %>
+  </div>
+  <div class="field">
+    <%= f.label :phosphorus %><br />
+    <%= f.text_field :phosphorus %>
+  </div>
+  <div class="field">
+    <%= f.label :potassium %><br />
+    <%= f.text_field :potassium %>
+  </div>
+  <div class="field">
+    <%= f.label :sodium %><br />
+    <%= f.text_field :sodium %>
+  </div>
+  <div class="field">
+    <%= f.label :zinc %><br />
+    <%= f.text_field :zinc %>
+  </div>
+  <div class="field">
+    <%= f.label :about %><br />
+    <%= f.text_field :about %>
+  </div>
+  <div class="field">
+    <%= f.label :benefits %><br />
+    <%= f.text_area :benefits %>
+  </div>
+  <div class="field">
+    <%= f.label :sideeffects %><br />
+    <%= f.text_area :sideeffects %>
+  </div>
+  <div class="field">
+    <%= f.label :extra %><br />
+    <%= f.text_field :extra %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

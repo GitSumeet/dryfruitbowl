@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @bowl.id %>
+</p>
+
+<p>
+  <b>Userid:</b>
+  <%= @bowl.userid %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @bowl.name %>
+</p>
+
+<p>
+  <b>Colour:</b>
+  <%= @bowl.colour %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%= @bowl.created %>
+</p>
+
+<p>
+  <b>Modified:</b>
+  <%= @bowl.modified %>
+</p>
+
+
+<%= link_to 'Edit', edit_bowl_path(@bowl) %> |
+<%= link_to 'Back', bowls_path %>

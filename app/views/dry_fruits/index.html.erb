@@ -1,0 +1,28 @@
+<h1 align="center">Dry Fruits Catalog</h1>
+<br/><br/>
+<div class="clearfix" style="margin: 0px 0px 50px 50px">
+	<% @dry_fruits.each do |dryfruit| %>
+		<a href="dry_fruits/<%= dryfruit.id %>">
+		<div class="tile double-vertical bg-color-white border-color-blueLight">
+	        <div class="tile-content fg-color-blue">
+	        	<%= image_tag(dryfruit.imagesmall) %>
+				<center><h3><%= dryfruit.name %></h3>
+				<hr/>
+				<p>The scientific name of this dry fruit is
+				<i><%= dryfruit.scientificname %></i>. 100 gms serving of this dry fruit provides  
+				<%= dryfruit.energy %> Kcal of energy, <%= dryfruit.fat %> gms fat
+				and <%= dryfruit.protein %> gms protein.</p></center>        	
+	        </div>
+	
+			<!--
+	        <div class="brand">
+	            <div class="badge">10</div>
+	            <div class="name"><%= dryfruit.name %></div>
+	        </div>
+	        -->						
+		</div>
+		</a>
+	<% end %>
+</div>
+<br/><br/>
+<%= link_to 'New Dryfruit', new_dry_fruit_path, :class => 'button' %>

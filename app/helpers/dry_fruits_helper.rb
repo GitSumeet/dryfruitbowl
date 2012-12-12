@@ -1,0 +1,2 @@
+module DryFruitsHelper
+end

@@ -1,0 +1,78 @@
+Creating a new project
+
+MySQL
+>> root: mysql -u root -p
+Socket: /var/run/mysqld/mysqld.sock
+User: root
+
+>> rails new TheDryFruitBowl
+This will create a new directory in the current directory with the 
+project name and will also create all the required project files.
+
+Open the above project in netBeans IDE
+
+>> cd TheDryFruitBowl
+>> rails server
+This will start the Webrick server. Going to http://localhost:3000/ will 
+display the initial page of the Ruby on Rails application.
+
+If the server did not start and asks for Java Runtime, run
+Add gem 'therubyracer' to the GemFile file in the project and
+>> gem install rubyracer
+
+RAKE - If asks for JavaScript
+>> gem install therubyracer
+
+Install MySQL Adapter
+>> gem install activerecord-mysql2-adapter
+
+SCAFFOLD:
+dryfruit => id:integer,name:string,scientificname:string,energy:integer,fat:decimal,protein:decimal,image:binary
+:precision => 8, :scale => 2
+
+rake db:drop:all
+rake db:create:all
+rake db:migrate
+
+
+// Local Git and Heroku
+sudo apt-get install git
+-- change to deploy/{app} folder
+git init
+git add .
+git commit -m "dep 1"
+
+-- Install Heroku
+wget -qO- https://toolbelt.heroku.com/install.sh | sh
+
+> heroku login
+
+-- Add RSA Keys
+> Remove existing ones from /home/abhi/.ssh
+> heroku keys:add
+> heroku keys:add ~/.ssh/id_rsa.pub
+
+-- Create remote heroku
+heroku create
+
+git push heroku master
+
+-- To update a site:
+> copy & replace the latest code to deploy/app folder
+> git add .
+> git commit
+> git push heroku master
+
+-- Postgresql Db
+sudo apt-get install ruby-dev libpq-dev build-essential
+sudo gem install pg
+bundle install
+
+heroku run rake db:create or db:migrate
+
+------ PaaS Clouds for Rails
+OpenShift - Ruby + Myql
+
+Heroku - Ruby + Postgresql
+
+

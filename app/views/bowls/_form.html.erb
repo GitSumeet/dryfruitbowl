@@ -1,0 +1,41 @@
+<%= form_for(@bowl) do |f| %>
+  <% if @bowl.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bowl.errors.count, "error") %> prohibited this bowl from being saved:</h2>
+
+      <ul>
+      <% @bowl.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :userid %><br />
+    <%= f.number_field :userid %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :colour %><br />
+    <%= f.text_field :colour %>
+  </div>
+  <div class="field">
+    <%= f.label :created %><br />
+    <%= f.datetime_select :created %>
+  </div>
+  <div class="field">
+    <%= f.label :modified %><br />
+    <%= f.datetime_select :modified %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @content.id %>
+</p>
+
+<p>
+  <b>Bowlid:</b>
+  <%= @content.bowlid %>
+</p>
+
+<p>
+  <b>Dryfruitid:</b>
+  <%= @content.dryfruitid %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @content.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>

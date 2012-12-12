@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Dry Fruit Bowl Project</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="margin: 20px 20px 20px 20px; background-color: white">
+	<table>
+		<tbody>
+			<tr>
+				<td width="80%">
+					<div class="nav-bar bg-color-white">
+						<div class="nav-bar-inner">
+							<span class="element"><%= link_to 'Home', { :controller => 'static', :action => 'index'} %></span>
+					        <span class="divider"></span>
+					        <span class="element"><%= link_to 'Catalog', { :controller => 'dry_fruits', :action => 'index'} %></span>
+							<span class="divider"></span>
+					        <span class="element"><%= link_to 'My Bowl', { :controller => 'bowls', :action => 'index'} %></span>	        
+					        <span class="divider"></span>
+					        <span class="element"><%= link_to 'About', "#", :id => "modal", :remote => true %></span>
+				        </div>
+					</div>					
+				</td>
+				<td width="20%" align="right">
+					[Release 0.1 Neptune]					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+<%= yield %>
+
+</body>
+</html>
