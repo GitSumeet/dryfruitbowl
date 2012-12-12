@@ -32,10 +32,10 @@ class CreateDryFruits < ActiveRecord::Migration
       t.decimal :potassium
       t.decimal :sodium
       t.decimal :zinc
-      t.string :about
+      t.text :about
       t.text :benefits
       t.text :sideeffects
-      t.string :extra
+      t.text :extra
 
       t.timestamps
     end
