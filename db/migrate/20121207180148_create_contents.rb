@@ -1,6 +1,6 @@
 class CreateContents < ActiveRecord::Migration
   def change
-    create_table (:contents, :primary_key => 'id') do |t|
+    create_table(:contents, :primary_key => 'id') do |t|
       t.integer :id
       t.integer :bowlid
       t.integer :dryfruitid
