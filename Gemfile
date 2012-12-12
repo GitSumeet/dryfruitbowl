@@ -7,7 +7,13 @@ gem 'rails', '3.2.7'
 
 gem 'therubyracer'
 
-gem 'mysql2'
+group :production do
+  gem 'pg'
+end
+
+group :development, :test do
+  gem 'mysql2'
+end
 
 gem 'json'
 
