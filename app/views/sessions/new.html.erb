@@ -1,0 +1,54 @@
+<% if flash[:alert] %>
+	<p id="notice">
+		<%= flash[:alert] %>
+	</p>
+<% end %>
+
+<table>
+	<tbody>
+		<tr>
+			<td width="33%"/>
+			<td width="33%" align="center">
+				<img src='/assets/cat.jpg' align="center"/>
+			</td>
+			<td width="33%"/>
+		</tr>
+		<tr>
+			<td width="33%"/>
+			<td width="33%">
+				<%= form_tag do %>
+					<fieldset>
+						<legend>Log In</legend>
+						
+						<table>
+							<tbody>
+								<tr>
+									<td colspan="2">
+										<div class="input-control text span5">
+											<label for="email">Email</label>
+											<%= text_field_tag :email, params[:email], :class => "email" %>
+										</div>
+										
+										<div class="input-control text span5">
+											<label for="password">Password</label>
+											<%= password_field_tag :password, params[:password], :class => 'password' %>
+										</div>										
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<%= submit_tag "Login" %>				
+									</td>
+									<td align="right">
+										<a class='button bg-color-darken fg-color-white' href='/users/new'>Register New User</a>											
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</fieldset>
+				<% end %>
+			</td>
+			<td width="33%"/>
+		</tr>
+	</tbody>
+</table>

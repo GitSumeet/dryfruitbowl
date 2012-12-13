@@ -2,7 +2,12 @@ class BowlsController < ApplicationController
   # GET /bowls
   # GET /bowls.json
   def index
-    @bowls = Bowl.all
+    if session[:userid] == nil
+      redirect_to login_url
+      return
+    else
+      @bowls = Bowl.find(:all, :conditions => ['userid = ?', session[:userid]])
+    end
 
     respond_to do |format|
       format.html # index.html.erb

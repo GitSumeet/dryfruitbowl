@@ -7,5 +7,5 @@ class StaticController < ApplicationController
   def about
     # displays the about page
   end
-  
+    
 end

@@ -20,6 +20,10 @@
 					        <span class="element"><%= link_to 'My Bowl', { :controller => 'bowls', :action => 'index'} %></span>	        
 					        <span class="divider"></span>
 					        <span class="element"><%= link_to 'About', "#", :id => "modal", :remote => true %></span>
+					        <% unless session[:userid].nil? %>
+						        <span class="divider"></span>
+						        <span class="element"><%= link_to 'Logout', logout_path, :method => :delete %></span>					        	
+					        <% end %>
 				        </div>
 					</div>					
 				</td>

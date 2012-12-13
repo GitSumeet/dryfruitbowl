@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %><br />
-    <%= f.number_field :id %>
-  </div>
-  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
@@ -28,12 +24,16 @@
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
-    <%= f.label :passwordhash %><br />
-    <%= f.text_field :passwordhash %>
+    <%= f.label :password, 'Password' %><br />
+    <%= f.password_field :password, :size => 20 %>
   </div>
   <div class="field">
-    <%= f.label :age %><br />
-    <%= f.number_field :age %>
+    <%= f.label :password_confirmation, 'Confirm' %><br />
+    <%= f.password_field :password_confirmation, :size => 20 %>
+  </div>  
+  <div class="field">
+    <%= f.label :dob %><br />
+    <%= f.number_field :dob %>
   </div>
   <div class="field">
     <%= f.label :height %><br />
@@ -42,10 +42,6 @@
   <div class="field">
     <%= f.label :weight %><br />
     <%= f.text_field :weight %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.text_field :picture %>
   </div>
   <div class="actions">
     <%= f.submit %>
