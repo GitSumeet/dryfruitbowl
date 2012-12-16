@@ -4759,11 +4759,11 @@ table.bordered tbody tr:last-child td {
   font-family: 'Segoe UI', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 9pt;
-  color: #ffffff;
+  color: #000000;
 }
 .tile .brand  > .name:hover,
 .tile .tile-status  > .name:hover {
-  color: #ffffff;
+  color: #000000;
 }
 .tile .brand  > .name  > [class*=icon-],
 .tile .tile-status  > .name  > [class*=icon-] {

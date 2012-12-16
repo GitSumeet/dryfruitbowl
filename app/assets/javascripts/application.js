@@ -24,7 +24,7 @@ $(document).ready(function() {
 		 I have been working on this project sporadically and here is the first version.</div>\
 		 <br/>\
 		 The project uses the following components and technologies:<br/><br/>\
-		 <ul><li><a href="http://rubyonrails.org/" target="_blank">Rails 3.2.7</a></li><li><a href="http://jquery.com/" target="_blank">JQuery 1.8.3</a></li><li><a href="http://metroui.org.ua/" target="_blank">Metro UI CSS</a></li><li><a href="http://marcosesperon.es/apps/messi/" target="_blank">Messi Message Plugin</a></li></ul>\
+		 <ul><li>Ruby 1.8.7</li><li><a href="http://rubyonrails.org/" target="_blank">Rails 3.2.7</a></li><li><a href="http://jquery.com/" target="_blank">JQuery 1.8.3</a></li><li><a href="http://metroui.org.ua/" target="_blank">Metro UI CSS</a></li><li><a href="http://marcosesperon.es/apps/messi/" target="_blank">Messi Message Plugin</a></li><li>Aptana Studio 3 IDE</li><li>Ubuntu 12.04 LTS Platform</li></ul>\
 		 <br/>\
 		 DryFruitBowl is hosted on free version of <a href="http://www.heroku.com/" target="_blank">Heroku</a> Cedar stack using just 1 web Dyno. \
 		 It uses the inbuilt PostgreSQL database addon on Heroku. Project source code is publicly accessible through \

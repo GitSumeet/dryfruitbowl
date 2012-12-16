@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:email], params[:password])
     if user == nil
-      redirect_to login_url, :alert => "Inavlid username or password. Please try again."
+      redirect_to login_url, :alert => "Invalid username or password. Please try again."
       return
     else
       session[:userid] = user.id

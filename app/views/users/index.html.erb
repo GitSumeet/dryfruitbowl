@@ -1,38 +1,38 @@
-<h1>Listing users</h1>
+<h1>Users</h1>
+<br/><br/>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Email</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Passwordhash</th>
-    <th>DOB</th>
-    <th>Height</th>
-    <th>Weight</th>
-    <th>Picture</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div class="clearfix">
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.id %></td>
-    <td><%= user.email %></td>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
-    <td><%= user.passwordhash %></td>
-    <td><%= user.dob %></td>
-    <td><%= user.height %></td>
-    <td><%= user.weight %></td>
-    <td><%= user.picture %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
+	<div class="tile double bg-color-white border-color-blueLight">
+		<div class="tile-content fg-color-blue">
+			<%= image_tag('/assets/users/' + user.picture, :class=> 'place-left') %>
+			<h4 style="margin-bottom: 5px;"><%= user.firstname %></h4>
+			<p>
+				<%= user.firstname%> <%= user.lastname %><br/>
+				<%= user.email %><br/><br/><br/>
+				<div class='toolbar' align="right">
+			    	<%= link_to (user, :class => 'button') do %>
+						<img src='/assets/eye.png' title="See Profile"/>
+			    	<% end %> 					
+			    	<%= link_to (edit_user_path(user), :class => 'button') do %>
+						<img src='/assets/pencil1.png' title="Edit Profile"/>
+			    	<% end %> 
+			    	<%= link_to (user, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'button') do %>
+						<img src='/assets/cancel1.png' title="Delete User"/>
+			    	<% end %>
+			    </div>																
+			</p>
+			<div class="brand">
+				<span class="name">
+					<% if user.role == 0 %>Admin
+					<% else %>Normal
+					<% end %>
+				</span>
+			</div>
+		</div>	
+	</div>
 <% end %>
-</table>
+</div>
 
 <br />
 

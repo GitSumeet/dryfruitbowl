@@ -10,40 +10,58 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :password, 'Password' %><br />
-    <%= f.password_field :password, :size => 20 %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirm' %><br />
-    <%= f.password_field :password_confirmation, :size => 20 %>
-  </div>  
-  <div class="field">
-    <%= f.label :dob %><br />
-    <%= f.number_field :dob %>
-  </div>
-  <div class="field">
-    <%= f.label :height %><br />
-    <%= f.number_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label :weight %><br />
-    <%= f.text_field :weight %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+	<table>
+		<tbody>
+			<tr>
+				<td width="50%" valign="top">
+					<fieldset>
+						<legend>Required</legend>	
+						<div class="input-control text span5">
+							<%= f.label :email %><br />
+							<%= f.text_field :email %>
+						</div>
+						<div class="input-control text span4">
+							<%= f.label :firstname %><br />
+							<%= f.text_field :firstname %>
+						</div>
+						<div class="input-control text span4">
+							<%= f.label :lastname %><br />
+							<%= f.text_field :lastname %>
+						</div>
+						<div class="input-control password span3">
+							<%= f.label :password, 'Password' %><br />
+							<%= f.password_field :password, :size => 20 %>
+						</div>
+						<div class="input-control password span3">
+							<%= f.label :password_confirmation, 'Confirm' %><br />
+							<%= f.password_field :password_confirmation, :size => 20 %>
+						</div>
+					</fieldset>					
+				</td>
+				<td width="50%" valign="top">
+					<fieldset>
+						<legend>Optional</legend>	
+						<div class="input-control text span3">
+							<%= f.label :dob %> (MM/DD/YYYY)<br />
+							<%= f.text_field :dob %>
+						</div>
+						<div class="input-control text span2">
+							<%= f.label :height %> (cms)<br />
+							<%= f.text_field :height %>
+						</div>
+						<div class="input-control text span2">
+							<%= f.label :weight %> (Kgs)<br />
+							<%= f.text_field :weight %>
+						</div>
+						<div>A nice and funny profile photo will be assigned to you automatically.</div>
+					</fieldset>					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>

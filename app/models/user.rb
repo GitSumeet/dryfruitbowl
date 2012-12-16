@@ -6,6 +6,14 @@ class User < ActiveRecord::Base
   # make sure we have a unique email for each user
   validates :email, :presence => true, :uniqueness => true
   
+  # checks email is of form XX@XX.XX
+  validates_format_of :email, :with => /^.+@.+\..+$/, :on => :create
+  
+  validates_numericality_of :height, :only_integer => true, :message => "must be a whole number.", :allow_nil => true
+  validates_inclusion_of :height, :in => 100..240, :message => "is invalid. Must be between 100 and 240.", :allow_nil => true
+
+  validates_inclusion_of :weight, :in => 30..500, :message => "is invalid. MUst be between 30 and 500.", :allow_nil => true
+  
   # confirm both passwords match
   validates :password, :confirmation => true
   
@@ -43,7 +51,7 @@ private
   end
   
   def password_must_be_present
-    errors.add(:password, "Password is missing") unless passwordhash.present?  
+    errors.add(:password, "is missing") unless passwordhash.present?  
   end
   
 end
