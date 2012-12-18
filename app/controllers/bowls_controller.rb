@@ -47,12 +47,13 @@ class BowlsController < ApplicationController
   def create
     @bowl = Bowl.new(params[:bowl])
     
-    # set the creation time for this bowl
+    # set the current user's id and the creation time for this bowl
+    @bowl.userid = session[:user].userid.to_i
     @bowl.created = Time.now
     
     respond_to do |format|
       if @bowl.save
-        format.html { redirect_to @bowl, :notice => 'Bowl was successfully created.' }
+        format.html { redirect_to bowls_path, :notice => 'Bowl was successfully created.' }
         format.json { render :json => @bowl, :status => :created, :location => @bowl }
       else
         format.html { render :action => "new" }

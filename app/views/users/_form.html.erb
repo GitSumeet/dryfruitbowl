@@ -16,7 +16,9 @@
 			<tr>
 				<td width="10%" valign="top" style="padding-top: 30px">
 					<div class="image-container bg-color-white" style="width: 123px;">
-        			<%= image_tag('/assets/users/' + @user.picture, :size => '123x129') %>
+        			<% unless @user.picture == nil %>
+        				<%= image_tag('/assets/users/' + @user.picture, :size => '123x129') %>
+        			<% end %>
 				</td>
 				<td width="40%" valign="top">
 					<fieldset>
