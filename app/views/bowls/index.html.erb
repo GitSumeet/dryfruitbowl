@@ -1,34 +1,31 @@
-<br/><br/>
-<h2>This page will display all Bowls for a user</h2>
-
+<h2>All your bowls are displayed here</h2>
+<br/><br/><br/>
 <table>
   <tr>
-    <th>Id</th>
-    <th>Userid</th>
-    <th>Name</th>
-    <th>Colour</th>
-    <th>Created</th>
-    <th>Modified</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  	<td>
+		<ul class="listview">
+			<% @bowls.each do |bowl| %>
+	        <li class="bg-color-lighten">
+	            <div class="icon" style="background-color: <%= bowl.colour %>; width: 20; height: 20"></div>
+	            <div class="data">
+	                <h4><%= bowl.name %></h4>
+	                <p><%= bowl.description %></p>
+					<div class='toolbar' align="right">
+				    	<%= link_to (edit_bowl_path(bowl), :class => 'button') do %>
+							<img src='/assets/pencil1.png' title="Edit Bowl"/>
+				    	<% end %> 
+				    	<%= link_to (bowl, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'button') do %>
+							<img src='/assets/cancel1.png' title="Delete Bowl"/>
+				    	<% end %>
+				    </div>																	                
+	            </div>
+	        </li>
+	        <% end %>
+	    </ul>  		
+  	</td>
   </tr>
-
-<% @bowls.each do |bowl| %>
-  <tr>
-    <td><%= bowl.id %></td>
-    <td><%= bowl.userid %></td>
-    <td><%= bowl.name %></td>
-    <td><%= bowl.colour %></td>
-    <td><%= bowl.created %></td>
-    <td><%= bowl.modified %></td>
-    <td><%= link_to 'Show', bowl %></td>
-    <td><%= link_to 'Edit', edit_bowl_path(bowl) %></td>
-    <td><%= link_to 'Destroy', bowl, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Bowl', new_bowl_path %>
+<%= link_to 'New Bowl', new_bowl_path, :class => 'button' %>

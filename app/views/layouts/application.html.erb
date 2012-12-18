@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield :customscript %>
 </head>
 <body style="margin: 20px 20px 20px 20px; background-color: white">
 	<table>
@@ -16,19 +17,39 @@
 							<span class="element"><%= link_to 'Home', { :controller => 'static', :action => 'index'} %></span>
 					        <span class="divider"></span>
 					        <span class="element"><%= link_to 'Catalog', { :controller => 'dry_fruits', :action => 'index'} %></span>
-							<span class="divider"></span>
-					        <span class="element"><%= link_to 'My Bowl', { :controller => 'bowls', :action => 'index'} %></span>	        
 					        <span class="divider"></span>
-					        <span class="element"><%= link_to 'About', "#", :id => "modal", :remote => true %></span>
-					        <% unless session[:userid].nil? %>
-						        <span class="divider"></span>
-						        <span class="element"><%= link_to 'Logout', logout_path, :method => :delete %></span>					        	
-					        <% end %>
+							
+							<% if session[:user] == nil %>
+					        	<span class="element"><%= link_to 'My Bowls', { :controller => 'bowls', :action => 'index'} %></span>
+					        <% else %>
+								<ul class="menu">
+									<li data-role="dropdown">
+										<a href="#"><b><%= session[:user].firstname %></b></a>
+										<ul class="dropdown-menu">
+											<li>
+												<%= link_to 'My Bowls', bowls_path %>
+											</li>
+											<li>
+												<%= link_to 'Edit Profile', edit_user_path(session[:user].userid) %>
+											</li>
+											<li>
+												<%= link_to 'Logout', logout_path, :method => :delete %>
+											</li>
+											<% if session[:user].role == 0 %>
+												<li class="divider"></li>
+												<li>
+													<%= link_to 'Users', users_path %>
+												</li>											
+											<% end %>
+										</ul>
+									</li>
+								</ul>
+					        <% end %>	        
 				        </div>
 					</div>					
 				</td>
 				<td width="20%" align="right">
-					[Release 0.1 Neptune]					
+					<%= link_to 'Release 0.1 Neptune', "#", :id => "modal", :remote => true, :class => 'button bg-color-orange' %>					        
 				</td>
 			</tr>
 		</tbody>

@@ -1,3 +1,5 @@
+require 'session_data'
+
 class SessionsController < ApplicationController
   
   def new
@@ -9,13 +11,14 @@ class SessionsController < ApplicationController
       redirect_to login_url, :alert => "Invalid username or password. Please try again."
       return
     else
-      session[:userid] = user.id
+      # set user object values that we want to use
+      session[:user] = SessionData.new(user.id, user.firstname, user.role)
       redirect_to :controller => "bowls", :action => "index"   
     end    
   end
 
   def destroy
-    session[:userid] = nil
+    session[:user] = nil
     redirect_to home_url
   end
   

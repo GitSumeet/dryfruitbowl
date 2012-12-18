@@ -14,7 +14,11 @@
 	<table>
 		<tbody>
 			<tr>
-				<td width="50%" valign="top">
+				<td width="10%" valign="top" style="padding-top: 30px">
+					<div class="image-container bg-color-white" style="width: 123px;">
+        			<%= image_tag('/assets/users/' + @user.picture, :size => '123x129') %>
+				</td>
+				<td width="40%" valign="top">
 					<fieldset>
 						<legend>Required</legend>	
 						<div class="input-control text span5">
@@ -39,7 +43,7 @@
 						</div>
 					</fieldset>					
 				</td>
-				<td width="50%" valign="top">
+				<td width="40%" valign="top">
 					<fieldset>
 						<legend>Optional</legend>	
 						<div class="input-control text span3">
@@ -54,9 +58,9 @@
 							<%= f.label :weight %> (Kgs)<br />
 							<%= f.text_field :weight %>
 						</div>
-						<div>A nice and funny profile photo will be assigned to you automatically.</div>
 					</fieldset>					
 				</td>
+				<td width="10%"/>
 			</tr>
 		</tbody>
 	</table>

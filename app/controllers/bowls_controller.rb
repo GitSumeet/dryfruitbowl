@@ -2,11 +2,11 @@ class BowlsController < ApplicationController
   # GET /bowls
   # GET /bowls.json
   def index
-    if session[:userid] == nil
+    if session[:user] == nil
       redirect_to login_url
       return
     else
-      @bowls = Bowl.find(:all, :conditions => ['userid = ?', session[:userid]])
+      @bowls = Bowl.find(:all, :conditions => ['userid = ?', session[:user].userid])
     end
 
     respond_to do |format|
@@ -46,7 +46,10 @@ class BowlsController < ApplicationController
   # POST /bowls.json
   def create
     @bowl = Bowl.new(params[:bowl])
-
+    
+    # set the creation time for this bowl
+    @bowl.created = Time.now
+    
     respond_to do |format|
       if @bowl.save
         format.html { redirect_to @bowl, :notice => 'Bowl was successfully created.' }
@@ -63,6 +66,9 @@ class BowlsController < ApplicationController
   def update
     @bowl = Bowl.find(params[:id])
 
+    # set bowl modify time
+    @bowl.modified = Time.now
+    
     respond_to do |format|
       if @bowl.update_attributes(params[:bowl])
         format.html { redirect_to @bowl, :notice => 'Bowl was successfully updated.' }

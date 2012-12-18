@@ -1,3 +1,22 @@
+<% content_for :customscript do %>
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$("#wColorPicker1").wColorPicker({
+				value: $('input#bowl_colour').val(),
+				theme: "white",
+				mode: "click",
+				showSpeed: 200,
+				hideSpeed: 200,
+				buttonSize: 40,
+				onSelect: function(color){
+					$("input#bowl_colour").css("background", color).val(color);
+				}				
+		});
+	});
+</script>
+<% end %>
+
 <%= form_for(@bowl) do |f| %>
   <% if @bowl.errors.any? %>
     <div id="error_explanation">
@@ -11,30 +30,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :id %><br />
-    <%= f.number_field :id %>
-  </div>
-  <div class="field">
-    <%= f.label :userid %><br />
-    <%= f.number_field :userid %>
-  </div>
-  <div class="field">
+  <div class="input-control text span4">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="input-control text span6">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>  
+  <div>
     <%= f.label :colour %><br />
-    <%= f.text_field :colour %>
+    <div id="wColorPicker1"/>
+    <%= f.hidden_field :colour %>
   </div>
-  <div class="field">
-    <%= f.label :created %><br />
-    <%= f.datetime_select :created %>
-  </div>
-  <div class="field">
-    <%= f.label :modified %><br />
-    <%= f.datetime_select :modified %>
-  </div>
+  <br/>
   <div class="actions">
     <%= f.submit %>
   </div>
