@@ -72,7 +72,7 @@ class BowlsController < ApplicationController
     
     respond_to do |format|
       if @bowl.update_attributes(params[:bowl])
-        format.html { redirect_to @bowl, :notice => 'Bowl was successfully updated.' }
+        format.html { redirect_to bowls_path, :notice => 'Bowl was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

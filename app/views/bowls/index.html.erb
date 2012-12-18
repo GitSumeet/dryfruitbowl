@@ -7,8 +7,10 @@
   	<td>
 		<ul class="listview">
 			<% @bowls.each do |bowl| %>
-	        <li class="bg-color-lighten">
-	            <div class="icon" style="background-color: <%= bowl.colour %>; width: 20; height: 20"></div>
+	        <li class="bg-color-white border-color-blue">
+	        	<div class="icon" style="background-color: <%= bowl.colour %>">
+                	<%= image_tag('empty-bowl.png') %>
+            	</div>
 	            <div class="data">
 	                <h4><%= bowl.name %></h4>
 	                <p><%= bowl.description %></p>
