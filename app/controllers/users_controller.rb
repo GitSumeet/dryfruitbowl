@@ -64,8 +64,8 @@ class UsersController < ApplicationController
     @user.picture = 'user' + (1 + rand(5)).to_s + '.jpg'
     
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, :notice => 'User was successfully created.' }
+      if @user.save        
+        format.html { redirect_to login_url, :notice => 'User registration successful. Please log in.' }
         format.json { render :json => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
