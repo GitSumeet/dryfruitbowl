@@ -11,13 +11,13 @@
 				<%= user.firstname%> <%= user.lastname %><br/>
 				<%= user.email %><br/><br/><br/>
 				<div class='toolbar' align="right">
-			    	<%= link_to (user, :class => 'button') do %>
+			    	<%= link_to (user) do %>
 						<img src='/assets/eye.png' title="See Profile"/>
 			    	<% end %> 					
-			    	<%= link_to (edit_user_path(user), :class => 'button') do %>
+			    	<%= link_to (edit_user_path(user)) do %>
 						<img src='/assets/pencil1.png' title="Edit Profile"/>
 			    	<% end %> 
-			    	<%= link_to (user, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'button') do %>
+			    	<%= link_to (user, :method => :delete, :data => { :confirm => 'Are you sure?' }) do %>
 						<img src='/assets/cancel1.png' title="Delete User"/>
 			    	<% end %>
 			    </div>																
