@@ -15,10 +15,10 @@
 	                <h4><%= bowl.name %></h4>
 	                <p><%= bowl.description %></p>
 					<div class='toolbar' align="right">
-				    	<% link_to (edit_bowl_path(bowl), :class => 'button') do %>
+				    	<%= link_to(edit_bowl_path(bowl)) do %>
 							<img src='/assets/pencil1.png' title="Edit Bowl"/>
 				    	<% end %> 
-				    	<% link_to (bowl, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'button') do %>
+				    	<%= link_to(bowl, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'button') do %>
 							<img src='/assets/cancel1.png' title="Delete Bowl"/>
 				    	<% end %>
 				    </div>																	                
