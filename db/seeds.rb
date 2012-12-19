@@ -20,7 +20,7 @@ dry_fruits = DryFruit.create(
   
 users = User.create(
 [
-  { :email => 'abhimanyu@netjoos.com', :firstname => 'Abhimanyu', :lastname => 'Sirohi', :passwordhash => '', :dob => DateTime.new(1980, 6, 28), :height => 178, :weight => 88, :picture => 'abhi.jpg', :role => 0 }
+  { :email => 'abhimanyu@netjoos.com', :firstname => 'Abhimanyu', :lastname => 'Sirohi', :passwordhash => 'ae2129dfd90a2e3050173294beeac10826b48fafbb136d7be0515c99386431d1', :dob => DateTime.new(1980, 6, 28), :height => 178, :weight => 88, :picture => 'abhi.jpg', :role => 0, :salt => '-6470965780.776856778753381' }
 ]
 )
 
