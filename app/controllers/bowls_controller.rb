@@ -6,7 +6,7 @@ class BowlsController < ApplicationController
       redirect_to login_url
       return
     else
-      @bowls = Bowl.find(:all, :conditions => ['userid = ?', session[:user].userid])
+      @bowls = Bowl.find(:all, :conditions => ['user_id = ?', session[:user].userid])
     end
 
     respond_to do |format|
@@ -30,7 +30,8 @@ class BowlsController < ApplicationController
   # GET /bowls/new.json
   def new
     @bowl = Bowl.new
-
+    @dry_fruits = DryFruit.all
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @bowl }
@@ -40,6 +41,7 @@ class BowlsController < ApplicationController
   # GET /bowls/1/edit
   def edit
     @bowl = Bowl.find(params[:id])
+    @dry_fruits = DryFruit.all
   end
 
   # POST /bowls
@@ -48,11 +50,20 @@ class BowlsController < ApplicationController
     @bowl = Bowl.new(params[:bowl])
     
     # set the current user's id and the creation time for this bowl
-    @bowl.userid = session[:user].userid.to_i
+    @bowl.user_id = session[:user].userid.to_i
     @bowl.created = Time.now
     
     respond_to do |format|
       if @bowl.save
+
+        Rails.logger.info "Adding contents for bowl"
+        
+        params.keys.each do |param|
+          if param.start_with?("input_") and (params[param] != "")            
+            @bowl.contents.create(:bowl_id => @bowl.id, :dryfruit_id => param[6, 2], :quantity => params[param])  
+          end
+        end
+        
         format.html { redirect_to bowls_path, :notice => 'Bowl was successfully created.' }
         format.json { render :json => @bowl, :status => :created, :location => @bowl }
       else
@@ -66,12 +77,24 @@ class BowlsController < ApplicationController
   # PUT /bowls/1.json
   def update
     @bowl = Bowl.find(params[:id])
-
+        
     # set bowl modify time
     @bowl.modified = Time.now
     
     respond_to do |format|
       if @bowl.update_attributes(params[:bowl])
+        
+        Rails.logger.info "Updating Bowl Contents"
+        
+        # remove all contents for this bowl and add new
+        @bowl.contents.delete_all("bowl_id=" + @bowl.id)
+        
+        params.keys.each do |param|
+          if param.start_with?("input_") and (params[param] != "")            
+            @bowl.contents.create(:bowl_id => @bowl.id, :dryfruit_id => param[6, 2], :quantity => params[param])  
+          end
+        end
+
         format.html { redirect_to bowls_path, :notice => 'Bowl was successfully updated.' }
         format.json { head :no_content }
       else

@@ -1,6 +1,33 @@
 <% content_for :customscript do %>
 <script type="text/javascript">
-	
+
+	$(function() {
+		// sliderX sets value in inputX
+		$(".slider").on("change", function(e, val) {
+			$('#input_' + $(this).attr('id').substring(6)).val(val);
+		});
+		
+		$(".slider").on("changed", function(e, val) {
+			
+			var v = 0;
+			var total_energy = 0, total_fat = 0, total_protein = 0, total_carbo = 0;
+			$(".slider").each(function(index) {
+				// get the value from corresponding input box
+				v = $('#input_' + $(this).attr('id').substring(6)).val();
+				
+				// ignore input that do not have valid values
+				if(v != "") {
+					total_energy += parseFloat(v) * parseFloat($('#input_' + $(this).attr('id').substring(6)).attr("energy"));
+					total_fat += parseFloat(v) * parseFloat($('#input_' + $(this).attr('id').substring(6)).attr("fat"));
+					total_protein += parseFloat(v) * parseFloat($('#input_' + $(this).attr('id').substring(6)).attr("protein"));
+					total_carbo += parseFloat(v) * parseFloat($('#input_' + $(this).attr('id').substring(6)).attr("carbo"));
+				}
+			});
+			
+			$('#nutrimsg').text("You bowl contains " + total_energy.toFixed(2) + " Kcal Energy, " + total_fat.toFixed(2) + " gms Fat, " + total_protein.toFixed(2) + " gms Protein and " + total_carbo.toFixed(2) + " gms Carbohydrates. Move the sliders on the right to adjust the amount of dry fruits. Your bowls page will display detailed nutrition information.");
+        })
+	});
+
 	$(document).ready(function() {
 		$("#wColorPicker1").wColorPicker({
 				value: $('input#bowl_colour').val(),
@@ -12,39 +39,86 @@
 				onSelect: function(color){
 					$("input#bowl_colour").css("background", color).val(color);
 				}				
-		});
+		});		
 	});
 </script>
 <% end %>
 
 <%= form_for(@bowl) do |f| %>
-  <% if @bowl.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bowl.errors.count, "error") %> prohibited this bowl from being saved:</h2>
 
-      <ul>
-      <% @bowl.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<% if @bowl.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@bowl.errors.count, "error") %> prohibited this bowl from being saved:</h2>
+			<ul>
+				<% @bowl.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-  <div class="input-control text span4">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="input-control text span6">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>  
-  <div>
-    <%= f.label :colour %><br />
-    <div id="wColorPicker1"/>
-    <%= f.hidden_field :colour %>
-  </div>
-  <br/>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<table>
+		<tr>
+			<td width="40%" valign="top">
+				<fieldset>
+					<legend>General</legend>
+					<div class="input-control text span4">
+						<%= f.label :name %><br />
+						<%= f.text_field :name %>
+					</div>
+					
+					<div class="input-control text span6">
+						<%= f.label :description %><br />
+						<%= f.text_field :description %>
+					</div>
+					  
+					<div>
+						<%= f.label :colour %><br />
+						<div id="wColorPicker1"/>
+							<%= f.hidden_field :colour %>
+						</div>
+					</div>
+					
+					<div>
+						<p id="nutrimsg">You bowl contains X Kcal Energy, X gms Fat, 
+							X gms Protein and X gms Carbohydrates. Move the sliders on the right to adjust the amount of dry fruits.
+							Your bowls page will display detailed nutrition information.
+						</p> 
+					</div>
+				</fieldset>	
+			</td>
+			<td width="60%">
+				<fieldset>
+					<legend>Bowl Content</legend>
+					<table>
+						<% @dry_fruits.each do |dryfruit| %>
+							<tr>
+								<td width="15%">
+									<%= image_tag(dryfruit.imagesmall, :size => "50x37", :title => dryfruit.name) %>	
+								</td>
+								<td width="70%">
+									<div id="slider<%= dryfruit.id %>" class="slider" data-role="slider"/>
+								</td>
+								<td width="15%">
+									<div class="input-control text span1 disabled">
+										<input id="input_<%= dryfruit.id %>" type="text" name="input_<%= dryfruit.id %>" 
+										energy="<%= number_with_precision((dryfruit.energy.to_f * dryfruit.weightpp.to_f) / 100, :precision => 2)  %>" 
+										fat="<%= number_with_precision((dryfruit.fat.to_f * dryfruit.weightpp.to_f) / 100, :precision => 2) %>" 
+										protein="<%= number_with_precision((dryfruit.protein.to_f * dryfruit.weightpp.to_f) / 100, :precision => 2) %>" 
+										carbo="<%= number_with_precision((dryfruit.carbohydrates.to_f * dryfruit.weightpp.to_f) / 100, :precision => 2) %>" 
+										readonly />
+									</div>
+								</td>
+							</tr>
+						<% end %>
+					</table>
+				</fieldset>
+			</td>
+		</tr>
+	</table>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+  
 <% end %>

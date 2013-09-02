@@ -3,6 +3,8 @@ require 'digest/sha2'
 class User < ActiveRecord::Base
   attr_accessible :dob, :email, :firstname, :height, :id, :lastname, :passwordhash, :picture, :weight, :salt, :role, :password, :password_confirmation
   
+  has_many :bowls
+  
   # make sure we have a unique email for each user
   validates :email, :presence => true, :uniqueness => true
   

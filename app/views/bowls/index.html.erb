@@ -5,14 +5,14 @@
 <table>
   <tr>
   	<td>
-		<ul class="listview">
+		<ul class="accordion span10" date-role="accordion">
 			<% @bowls.each do |bowl| %>
-	        <li class="bg-color-white border-color-blue">
-	        	<div class="icon" style="background-color: <%= bowl.colour %>">
-                	<%= image_tag('empty-bowl.png') %>
-            	</div>
-	            <div class="data">
-	                <h4><%= bowl.name %></h4>
+	        <li class="active">
+	        	<a href="#"><%= bowl.name %></a>
+	            <div>
+		        	<div class="icon" style="background-color: <%= bowl.colour %>">
+	                	<%= image_tag('empty-bowl.png') %>
+	            	</div>	            	
 	                <p><%= bowl.description %></p>
 					<div class='toolbar' align="right">
 				    	<%= link_to(edit_bowl_path(bowl)) do %>
